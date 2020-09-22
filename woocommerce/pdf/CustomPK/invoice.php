@@ -401,9 +401,6 @@
 					// all tax information ( it is not base it is the tax ammount calculation  )
 					$all_taxes = $this->get_order_taxes();
 
-
-
-
 					// $i = 4;
 					foreach ($all_taxes as $key => $value) {
 						$all_tx_s = array();
@@ -464,7 +461,7 @@
 					<tr>
 						<td class="no-borders"></td>
 						<th class="description_new"><?php echo $base['label']; ?></th>
-						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $base['value']?>;
+						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $base['value']?>
 					</tr>
 				<?php endforeach; ?>
 
