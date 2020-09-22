@@ -350,8 +350,8 @@
 					// $pk_total_subtotal += $ship_no_tax;
 
 					// Tax base adding to the bottom total subtotal array at table bottom.
+					$tax_bases = array();
 					$shipping_percent = ( 100 / $ship_no_tax ) * $ship_tax;
-
 					foreach ( $tax_base_percent as $key => $value ) {
 						$keys = preg_replace('/[0-9]+/', '', $key);
 						$keys = str_replace('-', ' ', $keys );
@@ -364,7 +364,7 @@
 									'label' => "<span style='text-transform: capitalize;'>Exonerated ISV Base</span>",
 									'value' => $v
 								));
-								array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
+								array_splice( $tax, $i, 0, $new_tax_base_a );
 						}else {
 							if( $value['percent'] == $shipping_percent ){
 
@@ -378,7 +378,8 @@
 									'label' => "<span style='text-transform: capitalize;'>"."IMPORTE GRAVADO AL ".$value['percent']."%</span>",
 									'value' => $v
 								));
-								array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
+								//array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
+								$tax_bases += $new_tax_base_a;
 							}else {
 								$v = $this->format_price( $v );
 
@@ -388,7 +389,8 @@
 									'label' => "<span style='text-transform: capitalize;'>"."IMPORTE GRAVADO AL ".$value['percent']."%</span>",
 									'value' => $v
 								));
-								array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
+								// array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
+								$tax_bases += $new_tax_base_a;
 							}
 						}
 
@@ -449,14 +451,20 @@
 					 </tr>
 					 <tr>
 						<td class="no-borders"></td>
-						<th class="description_new">Importe Exento</th>
+						<th class="description_new">IMPORTE EXENTO</th>
 						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exent_val;?></span></td>
 					</tr>
 					<tr>
 					 <td class="no-borders"></td>
-					 <th class="description_new">Importe Exonerado</th>
+					 <th class="description_new">IMPORTE EXONERADO</th>
 					 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exoner_val;?></span></td>
 				 </tr>
+				 <?php foreach($tax_bases as $key => $base): ?>
+					 <tr>
+						<td class="no-borders"></td>
+						<th class="description_new"><?php echo $base['label']; ?></th>
+						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $base['value']?>;
+					</tr>
 
 				 		<?php unset($pk_final_total['cart_subtotal']) //remove subtotal ?>
 						<?php foreach( $pk_final_total as $key => $total ) : ?>
@@ -499,6 +507,7 @@
 		// var_dump( $this->get_order_taxes() );
 		// var_dump( $array_new_one );
 		var_dump( $pk_final_total);
+		var_dump($tax_bases );
 		// var_dump( $pk_final_total['order_total']['value'] );
 		// var_dump( $ship );
 
