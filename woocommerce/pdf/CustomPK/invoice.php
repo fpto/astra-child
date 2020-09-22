@@ -512,8 +512,8 @@
 		// var_dump( $this->get_order_taxes() );
 		// var_dump( $this->get_order_taxes() );
 		// var_dump( $array_new_one );
-		var_dump( $pk_final_total);
-		var_dump($tax_bases);
+		// var_dump( $pk_final_total);
+		// var_dump($tax_bases);
 		// var_dump( $pk_final_total['order_total']['value'] );
 		// var_dump( $ship );
 
