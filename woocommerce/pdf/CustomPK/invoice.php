@@ -405,7 +405,6 @@
 
 
 					// $i = 4;
-					$taxes_list = array();
 					foreach ($all_taxes as $key => $value) {
 						$all_tx_s = array();
 						$v = preg_replace( '/[^.\d]/', '', $value['value'] );
@@ -420,8 +419,8 @@
 
 							$array_new_one[] = $all_tx_s;
 
-							// array_splice( $pk_final_total, $i, 0, $all_tx_s );
-							$taxes_list += $all_tx_s;
+							array_splice( $pk_final_total, $i, 0, $all_tx_s );
+
 							$i++;
 						}
 					}
@@ -468,15 +467,9 @@
 						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $base['value']?>;
 					</tr>
 				<?php endforeach; ?>
-				<?php foreach($taxes_list as $key => $tax): ?>
-				 <tr>
-					 <td class="no-borders"></td>
-					 <th class="description_new"><?php echo $base['label']; ?></th>
-					 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $tax['value']?>;
-				 </tr>
-			 <?php endforeach; ?>
 
 				 		<?php unset($pk_final_total['cart_subtotal']) //remove subtotal ?>
+						<?php unset($pk_final_total['order_total']) //remove total ?>
 						<?php foreach( $pk_final_total as $key => $total ) : ?>
 							<tr class="<?php echo $key.'new'; ?>">
 								<td class="no-borders"></td>
@@ -485,6 +478,12 @@
 								 ?></span></td>
 							</tr>
 						<?php endforeach; ?>
+
+						<tr>
+						 <td class="no-borders"></td>
+						 <th class="description_new"><b style="text-transform: uppercase;">TOTAL A PAGAR:</b></th>
+						 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo '<b>'.$tot_arr[0].'</b>'?></span></td>
+					 </tr>
 					</tfoot>
 
 
