@@ -460,12 +460,12 @@
 					 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exoner_val;?></span></td>
 				 </tr>
 				 <?php foreach($tax_bases as $key => $base): ?>
-					 <tr>
+					<tr>
 						<td class="no-borders"></td>
 						<th class="description_new"><?php echo $base['label']; ?></th>
 						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $base['value']?>;
 					</tr>
-
+				<?php endforeach; ?>
 				 		<?php unset($pk_final_total['cart_subtotal']) //remove subtotal ?>
 						<?php foreach( $pk_final_total as $key => $total ) : ?>
 							<tr class="<?php echo $key.'new'; ?>">
@@ -507,7 +507,7 @@
 		// var_dump( $this->get_order_taxes() );
 		// var_dump( $array_new_one );
 		var_dump( $pk_final_total);
-		var_dump($tax_bases );
+		var_dump($tax_bases);
 		// var_dump( $pk_final_total['order_total']['value'] );
 		// var_dump( $ship );
 
