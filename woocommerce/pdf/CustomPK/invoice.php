@@ -303,6 +303,7 @@
 					<span style="font-size: 8px;">N. IDENTIFICATIVO DEL REGISTRO DE LA SAG:</span>
 				</div>
 			</td>
+			<!-- SUBTOTAL STARTS -->
 			<td class="no-borders" colspan="4">
 				<table class="totals new">
 					<tfoot>
@@ -445,6 +446,7 @@
 
 				</table>
 			</td>
+			<!-- SUBTOTAL ENDS -->
 		</tr>
 	</tfoot>
 </table>
@@ -470,6 +472,7 @@
 		// var_dump( $this->get_order_taxes() );
 		// var_dump( $this->get_order_taxes() );
 		// var_dump( $array_new_one );
+		var_dump( $pk_final_total);
 		// var_dump( $pk_final_total['order_total']['value'] );
 		// var_dump( $ship );
 
