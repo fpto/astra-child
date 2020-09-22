@@ -255,7 +255,7 @@
 			<td>Envío</td>
 			<td><?php $ship = $this->get_order_shipping('shipping_total');
 				$ship_val = isset($ship['value'])?$ship['value']:0;
-				$ship_tax = isset($ship['tax'])?$ship['tax']:0;;
+				$ship_tax = isset($ship['tax'])?$ship['tax']:0;
 				$ship_val = preg_replace( '/[^.\d]/', '', $ship_val );
 				$ship_tax = preg_replace( '/[^.\d]/', '', $ship_tax );
 				$ship_no_tax = $ship_val - $ship_tax;
@@ -322,10 +322,19 @@
 					));
 					array_splice( $pk_final_total, 1, 0, $new_arr_1 );
 
+					$val2 = $this->format_price(0 );
+					$new_arr_2 = array(
+						'no_tax_isv_base' =>
+						array(
+						'label' => "IMPORTE EXONERADO:",
+						'value' => $val2
+					));
+					array_splice( $pk_final_total, 1, 0, $new_arr_2 );
+
 					// shipping calculation new
 					$ship = $this->get_order_shipping('shipping_total');
 					$ship_val = isset($ship['value'])?$ship['value']:0;
-					$ship_tax = isset($ship['tax'])?$ship['tax']:0;;
+					$ship_tax = isset($ship['tax'])?$ship['tax']:0;
 					$ship_val = preg_replace( '/[^.\d]/', '', $ship_val );
 					$ship_tax = preg_replace( '/[^.\d]/', '', $ship_tax );
 					$ship_no_tax = $ship_val - $ship_tax;
@@ -429,17 +438,23 @@
 					// new grand total
 					$pk_final_total['order_total']['label'] = '<b style="text-transform: uppercase;">TOTAL A PAGAR:</b>';
 					$pk_final_total['order_total']['value'] = '<b>'.$tot_arr[0].'</b>';
-
+					?>
 
 
 					 //base amounts and taxes row
-						foreach( $pk_final_total as $key => $total ) : ?>
-						<tr class="<?php echo $key.'new'; ?>">
-							<td class="no-borders"></td>
-							<th class="description_new"><?php echo $total['label']; ?></th>
-							<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $total['value'];
-							 ?></span></td>
-						</tr>
+					 <tr>
+						 <td class="no-borders"></td>
+						 <th class="description_new">Subtotal</th>
+						 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $pk_final_total['cart_subtotal']['value'];?></span></td>
+					 </tr>
+
+						<?php foreach( $pk_final_total as $key => $total ) : ?>
+							<tr class="<?php echo $key.'new'; ?>">
+								<td class="no-borders"></td>
+								<th class="description_new"><?php echo $total['label']; ?></th>
+								<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $total['value'];
+								 ?></span></td>
+							</tr>
 						<?php endforeach; ?>
 					</tfoot>
 
