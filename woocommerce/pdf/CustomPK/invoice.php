@@ -475,15 +475,12 @@
 								 ?></span></td>
 							</tr>
 						<?php endforeach; ?>
-
 						<tr>
 						 <td class="no-borders"></td>
 						 <th class="description_new"><b style="text-transform: uppercase;">TOTAL A PAGAR:</b></th>
 						 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo '<b>'.$tot_arr[0].'</b>'?></span></td>
 					 </tr>
 					</tfoot>
-
-
 				</table>
 			</td>
 			<!-- SUBTOTAL ENDS -->
@@ -493,10 +490,7 @@
 <!-- product details table ends -->
 <!-- descriptioin invoice starts  -->
 <?php do_action( 'wpo_wcpdf_after_document_label', $this->type, $this->order ); ?>
-
-
-<div class="bottom-spacer"></div>
-
+<!--<div class="bottom-spacer"></div> -->
 <?php do_action( 'wpo_wcpdf_after_order_details', $this->type, $this->order ); ?>
 
 <?php if ( $this->get_footer() ): ?>
@@ -505,8 +499,6 @@
 </div><!-- #letter-footer -->
 <?php endif; ?>
 <?php do_action( 'wpo_wcpdf_after_document', $this->type, $this->order ); ?>
-
-
 <pre>
 	<?php
 		// var_dump( $this->get_order_taxes() );
