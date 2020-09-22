@@ -313,23 +313,23 @@
 
 					// no tax isv base to the totals array
 
-					$val = $this->format_price( $no_tax_isv_base );
+					$exent_val = $this->format_price( $no_tax_isv_base );
 					$new_arr_1 = array(
 						'no_tax_isv_base' =>
 						array(
 						'label' => "IMPORTE EXENTO:",
-						'value' => $val
+						'value' => $exent_val
 					));
-					array_splice( $pk_final_total, 1, 0, $new_arr_1 );
+					// array_splice( $pk_final_total, 1, 0, $new_arr_1 );
 
-					$val2 = $this->format_price(0 );
+					$exoner_val = $this->format_price(0 );
 					$new_arr_2 = array(
 						'no_tax_isv_base' =>
 						array(
 						'label' => "IMPORTE EXONERADO:",
 						'value' => $val2
 					));
-					array_splice( $pk_final_total, 1, 0, $new_arr_2 );
+					// array_splice( $pk_final_total, 1, 0, $exoner_val );
 
 					// shipping calculation new
 					$ship = $this->get_order_shipping('shipping_total');
@@ -441,13 +441,24 @@
 					?>
 
 
-					 //base amounts and taxes row
+					 <!-- base amounts and taxes row -->
 					 <tr>
 						 <td class="no-borders"></td>
 						 <th class="description_new">Subtotal</th>
 						 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $pk_final_total['cart_subtotal']['value'];?></span></td>
 					 </tr>
+					 <tr>
+						<td class="no-borders"></td>
+						<th class="description_new">Importe Exento</th>
+						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exent_val;?></span></td>
+					</tr>
+					<tr>
+					 <td class="no-borders"></td>
+					 <th class="description_new">Importe Exonerado</th>
+					 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exoner_val;?></span></td>
+				 </tr>
 
+				 		<?php unset($pk_final_total['cart_subtotal']) //remove subtotal ?>
 						<?php foreach( $pk_final_total as $key => $total ) : ?>
 							<tr class="<?php echo $key.'new'; ?>">
 								<td class="no-borders"></td>
