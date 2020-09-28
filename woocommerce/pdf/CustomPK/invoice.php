@@ -413,7 +413,7 @@
 					// base new new new
 					// all tax information ( it is not base it is the tax ammount calculation  )
 					$all_taxes = $this->get_order_taxes();
-
+					$tax_amounts = array();
 					// $i = 4;
 					foreach ($all_taxes as $key => $value) {
 						$all_tx_s = array();
@@ -427,9 +427,16 @@
 								'label'	=> $value['label'],
 								'value'	=> $vv
 							);
+							$new_tax_amount = array(
+								$value['label'].'amount' => array(
+									'label'	=> $value['label'],
+									'value'	=> $vv
+								)
+							);
 							$array_new_one[] = $all_tx_s;
 
 							array_splice( $pk_final_total, $i, 0, $all_tx_s );
+							$tax_amounts += $new_tax_amount;
 
 							$i++;
 						}
@@ -545,6 +552,7 @@
 		// var_dump( $items );
 
 		var_dump($tax_base_percent);
+		var_dump($tax_amounts);
 
 	 ?>
 </pre>
