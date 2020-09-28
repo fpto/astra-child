@@ -272,7 +272,7 @@
 		<!-- Adding shipping to taxbase of 15% -->
 		<<?php
 			if(!array_key_exists("Isv Base Amount", $tax_base_percent)){
-				$tax_base_percent["Isv Base Amount"] = array("label"=>"percent_15","value"=>float($ship_no_tax), "percent"=>float(15), "class"=>"Isv Base Amount");
+				$tax_base_percent["Isv Base Amount"] = array("label"=>"percent_15","value"=>$ship_no_tax, "percent"=>15, "class"=>"Isv Base Amount");
 			}
 		 ?>
 		<!-- total row of bottom total row total-->
