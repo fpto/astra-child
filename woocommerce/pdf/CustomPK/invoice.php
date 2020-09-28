@@ -304,6 +304,7 @@
 				</div>
 			</td>
 			<!-- SUBTOTAL STARTS -->
+			<!-- IMPORTE EXENTO y EXONERADO -->
 			<td class="no-borders" colspan="4">
 				<table class="totals new">
 					<tfoot>
@@ -505,7 +506,7 @@
 		// var_dump( $this->get_order_taxes() );
 		// var_dump( $array_new_one );
 		// var_dump( $pk_final_total);
-		// var_dump($tax_bases);
+		var_dump($tax_bases);
 		// var_dump( $pk_final_total['order_total']['value'] );
 		// var_dump( $ship );
 
