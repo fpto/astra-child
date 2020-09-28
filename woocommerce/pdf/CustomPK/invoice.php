@@ -516,6 +516,6 @@
 		// var_dump( $items[60]['product']->regular_price );
 		// var_dump( $items );
 
-		// var_dump($tax_base_percent);
+		var_dump($tax_base_percent);
 	 ?>
 </pre>
