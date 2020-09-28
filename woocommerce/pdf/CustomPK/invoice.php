@@ -511,7 +511,7 @@
 
 				 		<?php unset($pk_final_total['cart_subtotal']) //remove subtotal ?>
 						<?php unset($pk_final_total['order_total']) //remove total ?>
-						<?php foreach( $pk_final_total as $key => $total ) : ?>
+						<?php foreach( $tax_amounts as $key => $total ) : ?>
 							<tr class="<?php echo $key.'new'; ?>">
 								<td class="no-borders"></td>
 								<th class="description_new"><?php echo $total['label']; ?></th>
