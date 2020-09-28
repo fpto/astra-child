@@ -269,6 +269,12 @@
 			$pk_total_total += $ship_no_tax;
 			echo $this->format_price ( $ship_no_tax ); ?></td>
 		</tr>
+		<!-- Adding shipping to taxbase of 15% -->
+		<<?php
+			if(!array_key_exists("Isv Base Amount", $tax_base_percent)){
+				$tax_base_percent["Isv Base Amount"] = array("label"=>"percent_15","value"=>float($ship_no_tax), "percent"=>float(15), "class"=>"Isv Base Amount");
+			}
+		 ?>
 		<!-- total row of bottom total row total-->
 		<tr>
 			<td><b>Total</b></td>
@@ -524,6 +530,7 @@
 		var_dump($tax_bases);
 		// var_dump( $pk_final_total['order_total']['value'] );
 		var_dump( $ship );
+		var_dump($shipping_percent);
 
 		// var_dump( $item['item']['tax_class'] );
 		// var_dump( $r );
@@ -532,5 +539,6 @@
 		// var_dump( $items );
 
 		var_dump($tax_base_percent);
+
 	 ?>
 </pre>
