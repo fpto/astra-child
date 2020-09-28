@@ -546,13 +546,13 @@
 <pre>
 	<?php
 		// var_dump( $this->get_order_taxes() );
-		var_dump( $this->get_order_taxes() );
+		// var_dump( $this->get_order_taxes() );
 		// var_dump( $array_new_one );
-		var_dump( $pk_final_total);
-		var_dump($tax_bases);
+		// var_dump( $pk_final_total);
+		// var_dump($tax_bases);
 		// var_dump( $pk_final_total['order_total']['value'] );
-		var_dump( $ship );
-		var_dump($shipping_percent);
+		// var_dump( $ship );
+		// var_dump($shipping_percent);
 
 		// var_dump( $item['item']['tax_class'] );
 		// var_dump( $r );
@@ -560,8 +560,8 @@
 		// var_dump( $items[60]['product']->regular_price );
 		// var_dump( $items );
 
-		var_dump($tax_base_percent);
-		var_dump($tax_amounts);
+		// var_dump($tax_base_percent);
+		// var_dump($tax_amounts);
 
 	 ?>
 </pre>
