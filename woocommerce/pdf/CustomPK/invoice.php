@@ -458,6 +458,21 @@
 					 <th class="description_new">IMPORTE EXONERADO</th>
 					 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exoner_val;?></span></td>
 				 </tr>
+				 <!-- BASE AMOUNTS -->
+				 <!-- Guarantee ISV 18 and 15 bases are always populated -->
+				 <?php
+				 	if(!array_key_exists("base_value_18_percent", $tax_bases)){
+						$tax_bases["base_value_18_percent"] = array(
+							"label" => "IMPORTE GRAVADO AL 18%",
+              "value" => "L0.00");
+					};
+					if(!array_key_exists("base_value_15_percent", $tax_bases)){
+						$tax_bases["base_value_15_percent"] = array(
+							"label" => "IMPORTE GRAVADO AL 15%",
+							"value" => "L0.00");
+					};
+
+				 ?>
 				 <?php foreach($tax_bases as $key => $base): ?>
 					<tr>
 						<td class="no-borders"></td>
