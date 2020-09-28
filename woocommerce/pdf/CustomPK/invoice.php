@@ -422,11 +422,11 @@
 						if( $v > 0 ) {
 							// $v_n = $this->format_price( $v );
 							$vv = $this->format_price($v);
+
 							$all_tx_s[$value['label']] = array(
 								'label'	=> $value['label'],
 								'value'	=> $vv
 							);
-
 							$array_new_one[] = $all_tx_s;
 
 							array_splice( $pk_final_total, $i, 0, $all_tx_s );
@@ -530,7 +530,7 @@
 <pre>
 	<?php
 		// var_dump( $this->get_order_taxes() );
-		// var_dump( $this->get_order_taxes() );
+		var_dump( $this->get_order_taxes() );
 		// var_dump( $array_new_one );
 		var_dump( $pk_final_total);
 		var_dump($tax_bases);
