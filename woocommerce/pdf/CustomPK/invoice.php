@@ -398,14 +398,13 @@
 						$i++;
 					}
 					// <!-- Adding shipping to taxbase of 15% only if no products don't have taxes -->
-						$formated_ship_no_tax = $this->format_price($ship_no_tax);
 						if(!array_key_exists("Isv Base Amount", $tax_base_percent)){
-							$value = array("label"=>"percent_15","value"=>$formated_ship_no_tax, "percent"=>15, "class"=>"Isv Base Amount");
+							$value = array("label"=>"percent_15","value"=>$ship_no_tax, "percent"=>15, "class"=>"Isv Base Amount");
 							$new_tax_base_a = array(
 							'base_value_'.$value['percent'].'_percent' =>
 								array(
 								'label' => "<span style='text-transform: capitalize;'>"."IMPORTE GRAVADO AL ".$value['percent']."%</span>",
-								'value' => $formated_ship_no_tax
+								'value' => "L".number_format((float)$value['value'], 2, '.', '')
 							));
 							// array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
 							$tax_bases += $new_tax_base_a;
