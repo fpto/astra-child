@@ -523,7 +523,7 @@
 		// var_dump( $pk_final_total);
 		var_dump($tax_bases);
 		// var_dump( $pk_final_total['order_total']['value'] );
-		// var_dump( $ship );
+		var_dump( $ship );
 
 		// var_dump( $item['item']['tax_class'] );
 		// var_dump( $r );
