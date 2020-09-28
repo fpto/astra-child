@@ -407,7 +407,7 @@
 								'value' => $ship_no_tax
 								));
 							// array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
-							$tax_bases += $formated_ship_no_tax;
+							$tax_bases += $new_tax_base_a;
 						}
 
 					// base new new new
