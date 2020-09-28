@@ -405,10 +405,10 @@
 							'base_value_'.$value['percent'].'_percent' =>
 								array(
 								'label' => "<span style='text-transform: capitalize;'>"."IMPORTE GRAVADO AL ".$value['percent']."%</span>",
-								'value' => $ship_no_tax
+								'value' => $formated_ship_no_tax
 							));
 							// array_splice( $pk_final_total, $i, 0, $new_tax_base_a );
-							$tax_bases += $new_tax_base_a;
+							$tax_bases += $value["value"];
 						}
 
 					// base new new new
