@@ -405,7 +405,11 @@
 								array(
 								'label' => "<span style='text-transform: capitalize;'>"."IMPORTE GRAVADO AL ".$value['percent']."%</span>",
 <<<<<<< HEAD
+<<<<<<< HEAD
 								'value' => "L".number_format((float)$value['value'], 2, '.', '')
+=======
+								'value' => $ship_no_tax
+>>>>>>> parent of b525b21... Format ship no tax.
 =======
 								'value' => $ship_no_tax
 >>>>>>> parent of b525b21... Format ship no tax.
