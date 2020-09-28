@@ -428,7 +428,7 @@
 								'value'	=> $vv
 							);
 							$new_tax_amount = array(
-								$value['label'].'amount' => array(
+								$value['label'].' amount' => array(
 									'label'	=> $value['label'],
 									'value'	=> $vv
 								)
@@ -490,7 +490,16 @@
 							"label" => "IMPORTE GRAVADO AL 15%",
 							"value" => "L0.00");
 					};
-
+					if(!array_key_exists("I.S.V. 15% amount", $tax_amounts)){
+						$tax_amounts["I.S.V. 15%amount"] = array(
+							"label" => "I.S.V. 15%",
+							"value" => "L0.00");
+					};
+					if(!array_key_exists("I.S.V. 18% amount", $tax_amounts)){
+						$tax_amounts["I.S.V. 18% amount"] = array(
+							"label" => "I.S.V. 18%",
+							"value" => "L0.00");
+					};
 				 ?>
 				 <?php foreach($tax_bases as $key => $base): ?>
 					<tr>
