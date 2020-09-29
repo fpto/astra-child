@@ -458,28 +458,27 @@
 					// new grand total
 					$pk_final_total['order_total']['label'] = '<b style="text-transform: uppercase;">TOTAL A PAGAR:</b>';
 					$pk_final_total['order_total']['value'] = '<b>'.$tot_arr[0].'</b>';
-					?>
 
 
-					 <!-- base amounts and taxes row -->
-					 <tr>
-						 <td class="no-borders"></td>
-						 <th class="description_new">Subtotal</th>
-						 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $pk_final_total['cart_subtotal']['value'];?></span></td>
-					 </tr>
-					 <tr>
-						<td class="no-borders"></td>
-						<th class="description_new">IMPORTE EXENTO</th>
-						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exent_val;?></span></td>
-					</tr>
-					<tr>
-					 <td class="no-borders"></td>
-					 <th class="description_new">IMPORTE EXONERADO</th>
-					 <td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $exoner_val;?></span></td>
-				 </tr>
-				 <!-- BASE AMOUNTS -->
-				 <!-- Guarantee ISV 18 and 15 bases are always populated -->
-				 <?php
+					// function to print total rows
+					function sub_totals_rows($label,$value){
+						echo '<tr>';
+						echo 		'<td class="no-borders"></td>';
+						echo 		'<th class="description_new">'.$label.'</th>';
+						echo 		'<td style="text-align: center;" class="price_new"><span class="totals-price">'.$value.'</span>';
+						echo '</tr>';
+					}
+
+				 //<!-- base amounts and taxes row -->
+				 		// Subtotal
+						sub_totals_rows("Subtotal",$pk_final_total['cart_subtotal']['value']);
+						// Importe exento
+						sub_totals_rows("IMPORTE EXENTO",$exent_val);
+						// Importe EXONERADO
+						sub_totals_rows("IMPORTE EXONERADO",$exoner_val);
+
+				 //<!-- BASE AMOUNTS -->
+				 // <!-- Guarantee ISV 18 and 15 bases are always populated -->
 				 	if(!array_key_exists("base_value_18_percent", $tax_bases)){
 						$tax_bases["base_value_18_percent"] = array(
 							"label" => "IMPORTE GRAVADO AL 18%",
@@ -501,24 +500,19 @@
 							"value" => "L0.00");
 					};
 				 ?>
-				 <?php foreach($tax_bases as $key => $base): ?>
-					<tr>
-						<td class="no-borders"></td>
-						<th class="description_new"><?php echo $base['label']; ?></th>
-						<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $base['value']?>
-					</tr>
-				<?php endforeach; ?>
+				 <?php
+				 		foreach($tax_bases as $key => $base):
+					 		sub_totals_rows($base['label'],$base['value']);
+					  endforeach;
+					?>
 
-				 		<?php unset($pk_final_total['cart_subtotal']) //remove subtotal ?>
-						<?php unset($pk_final_total['order_total']) //remove total ?>
-						<?php foreach( $tax_amounts as $key => $total ) : ?>
-							<tr class="<?php echo $key.'new'; ?>">
-								<td class="no-borders"></td>
-								<th class="description_new"><?php echo $total['label']; ?></th>
-								<td style="text-align: center;" class="price_new"><span class="totals-price"><?php echo $total['value'];
-								 ?></span></td>
-							</tr>
-						<?php endforeach; ?>
+			 		<?php unset($pk_final_total['cart_subtotal']) //remove subtotal ?>
+					<?php unset($pk_final_total['order_total']) //remove total ?>
+					<?php
+						foreach( $tax_amounts as $key => $total ) :
+							sub_totals_rows($total['label'],$total['value']);
+						endforeach;
+					?>
 						<tr>
 						 <td class="no-borders"></td>
 						 <th class="description_new"><b style="text-transform: uppercase;">TOTAL A PAGAR:</b></th>
